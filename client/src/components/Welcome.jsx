@@ -2,6 +2,7 @@ import React from 'react'
 import { AiFillPlayCircle } from 'react-icons/ai'
 import { SiEthereum } from 'react-icons/si'
 import { BsInfoCircle} from 'react-icons/bs'
+import { BiSend } from 'react-icons/bi'
 
 import Loader from './Loader'
 
@@ -20,6 +21,10 @@ const Input = ({placeholder, name, type, value, handleChange}) => (
 
 const Welcome = () => {
   const connectWallet = () => {
+
+  }
+
+  const handleSubmit = () => {
 
   }
   return (
@@ -75,10 +80,16 @@ const Welcome = () => {
             <Input placeholder="Keyword (GIF)" name="keyword" type="text" handleChange={() => {}}/>
             <Input placeholder="Enter Message" name="message" type="text" handleChange={() => {}}/>
             <div className='h-[1px] w-full bg-gray-400 my-2' />
-            {true ? (
+            {false ? (
               <Loader />
             ) : (
-              <div></div>
+              <button
+              type="button"
+              onClick={handleSubmit}
+              className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] rounded-full cursor-pointer flex justify-center"
+              >
+                <BiSend />
+              </button>
             )}
           </div>
 
