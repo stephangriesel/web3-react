@@ -23,10 +23,6 @@ const Input = ({placeholder, name, type, value, handleChange}) => (
 const Welcome = () => {
   const { value } = useContext(TransactionContext);
   console.log("check value: ",value);
-  const connectWallet = () => {
-
-  }
-
   const handleSubmit = () => {
 
   }
@@ -42,7 +38,6 @@ const Welcome = () => {
         </p>
         <button 
         type="button"
-        onClick={connectWallet}
         className="text-white text-base font-semibold flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
         >
           Connect Wallet
