@@ -21,7 +21,7 @@ const Input = ({placeholder, name, type, value, handleChange}) => (
 )
 
 const Welcome = () => {
-  const { connectWallet } = useContext(TransactionContext);
+  const { connectWallet, currentAccount } = useContext(TransactionContext);
   console.log("check connect wallet: ",connectWallet);
   const handleSubmit = () => {
 
@@ -36,13 +36,13 @@ const Welcome = () => {
         <p className='text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas vitae nisi minus natus in. Quidem similique doloribus quibusdam eveniet velit.
         </p>
-        <button 
+        {!currentAccount && (<button 
         type="button"
         onClick={connectWallet}
         className="text-white text-base font-semibold flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
         >
           Connect Wallet
-        </button>
+        </button>)}
         <div className='grid sm:grid-cols-3 grid-cols-2 w-full mt-10'>
           <div className={`rounded-tl-2xl ${commonStyles}`}>Reliability</div>
           <div className={commonStyles}>Security</div>
