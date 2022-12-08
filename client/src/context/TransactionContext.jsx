@@ -12,7 +12,7 @@ const getEthereumContract = () => {
     const signer = provider.getSigner();
     const transactionContract = new ethers.Contract(contractAddress, contractABI, signer);
 
-    console.log({
+    console.log("Provider, Signer & Transaction Contract: ",{
         provider,
         signer,
         transactionContract
@@ -63,7 +63,10 @@ export const TransactionProvider = ({children}) => {
     const sendTransaction = async () => {
         try {
             if(!ethereum) return alert("Please install metamask");
-            // pass data from form
+
+            const {addressTo, amount, keyword, message} = formData;
+
+            getEthereumContract();
 
         } catch (error) {
             console.log(error);
