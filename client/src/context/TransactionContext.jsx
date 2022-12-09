@@ -16,7 +16,9 @@ const getEthereumContract = () => {
         provider,
         signer,
         transactionContract
-    })
+    });
+
+    return transactionContract;
 }
 
 export const TransactionProvider = ({children}) => {
@@ -66,7 +68,21 @@ export const TransactionProvider = ({children}) => {
 
             const {addressTo, amount, keyword, message} = formData;
 
-            getEthereumContract();
+            const transactionContract = getEthereumContract();
+
+            const parsedAmount = ethers.utils.parseEther(amount);
+
+            await ethereum.request({
+                method: 'eth_sendTransaction',
+                params: [
+                    {
+                        from: currentAccount,
+                        to: addressTo,
+                        gas: '0x5208', // https://www.rapidtables.com/convert/number/hex-to-decimal.html
+                        value: parsedAmount._hex,
+                    }
+                ]
+            })
 
         } catch (error) {
             console.log(error);
